@@ -29,25 +29,26 @@ int main()
     while(t--){
         int n; cin>>n; 
 
-        vi v(n); 
+        vi a(n), b(n);
+
+        for(int i = 0; i < n; i++) {
+            cin>>a[i];
+        }
+        for(int i = 0; i < n; i++) {
+            cin>>b[i];
+        }
+
+        sorta(a);
+        sorta(b);
 
         for(int i = 0; i < n; i++){
-            cin>>v[i];
+            if(a[i] != b[i]){
+                a[i] += 1;
+            }
         }
 
-        vi ans;
-        ans.push_back(abs(v[0] - v[1]));
-        ans.push_back(abs(v[n - 1] - v[n - 2]));
-
-        for(int i = 1; i < n-2; i++){
-            int diff1 = abs(v[i+1] - v[i]);
-            int diff2 = abs(v[i] - v[i-1]);
-            ans.push_back(max(diff1, diff2));
-        }
-
-        sorta(ans); 
-
-        cout<<ans[0]<<endl;
+        if(a == b) cout<<"YES\n";
+        else cout<<"NO\n"; 
     }
     return 0; 
 }
